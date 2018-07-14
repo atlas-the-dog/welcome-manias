@@ -1,2 +1,1 @@
-[![Build Status](https://travis-ci.org/atlas-the-dog/welcome-manias.svg?branch=master)](https://travis-ci.org/atlas-the-dog/welcome-manias)[![Test Coverage](https://api.codeclimate.com/v1/badges/ea63926e93e0f3ea25b8/test_coverage)](https://codeclimate.com/github/atlas-the-dog/welcome-manias/test_coverage)[![Maintainability](https://api.codeclimate.com/v1/badges/ea63926e93e0f3ea25b8/maintainability)](https://codeclimate.com/github/atlas-the-dog/welcome-manias/maintainability)
-# welcome-manias
+

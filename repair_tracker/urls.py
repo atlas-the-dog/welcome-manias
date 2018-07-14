@@ -4,7 +4,10 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    url(r'^customer/(?P<pk>\d+)/edit/$', views.customer_edit, name='customer_edit'),
-    url(r'^customer/(?P<pk>\d+)/$', views.customer_detail, name='customer_detail'),
+    path('customer/', views.CustomerListView.as_view(), name='customer_list'),
+    url(r'^customer/(?P<pk>\d+)/$', views.CustomerDetail.as_view(), name='customer_detail'),
+    url(r'^customer/(?P<pk>\d+)/edit/$', views.CustomerUpdate.as_view(), name='edit_customer'),
+    url(r'^customer/new/$', views.CustomerCreate.as_view(), name='new_customer'),
+    url(r'^customer/(?P<pk>\d+)/delete/$', views.CustomerDelete.as_view(), name='delete_customer'),
 
 ]

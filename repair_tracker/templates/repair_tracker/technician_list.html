@@ -1,0 +1,8 @@
+<h1>Technicians</h1>
+<ul>
+{% for technician in object_list %}
+    <li>{{ technician.first_name }} {{ technician.surname }} ({{ customer.phone }})</li>
+{% empty %}
+    <li>No technicians yet.</li>
+{% endfor %}
+</ul>

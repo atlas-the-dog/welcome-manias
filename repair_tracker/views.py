@@ -11,6 +11,7 @@ from .models import Customer, Product, Technician
 def index(request):
     return HttpResponse("Hello, world. You're at the repair-tracker homepage.")
 
+# Customer views
 class CustomerDetail(DetailView):
     model = Customer
 
@@ -36,3 +37,58 @@ class CustomerUpdate(UpdateView):
 class CustomerDelete(DeleteView):
     model = Customer
     success_url = reverse_lazy('customer_list')
+
+# Product views
+class ProductDetail(DetailView):
+    model = Product
+
+class ProductListView(ListView):
+    model = Product
+    paginate_by = 100  # if pagination is desired
+
+class ProductCreate(CreateView):
+    model = Product
+    fields = ['make', 'model', 'product_type', 'damage', 'notes', 'purchase_date', 'reported_date', 'repaired_date', 'customer', 'technician']
+    
+    def get_success_url(self):
+        return reverse_lazy('customer_detail', kwargs={'pk': self.object.pk})
+
+class ProductUpdate(UpdateView):
+    model = Product
+    fields = ['make', 'model', 'product_type', 'damage', 'notes', 'purchase_date', 'reported_date', 'repaired_date', 'customer', 'technician']
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse_lazy('product_detail', kwargs={'pk': self.object.pk})
+
+class ProductDelete(DeleteView):
+    model = Product
+    success_url = reverse_lazy('product_list')
+
+# Technician views
+class TechnicianDetail(DetailView):
+    model = Technician
+
+class TechnicianListView(ListView):
+    model = Technician
+    paginate_by = 100  # if pagination is desired
+
+class TechnicianCreate(CreateView):
+    model = Technician
+    fields = ['first_name', 'surname', 'phone', 'phone_other', 'email']
+    
+    def get_success_url(self):
+        return reverse_lazy('technician_detail', kwargs={'pk': self.object.pk})
+
+class TechnicianUpdate(UpdateView):
+    model = Technician
+    fields = ['first_name', 'surname', 'phone', 'phone_other', 'email']
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse_lazy('technician_detail', kwargs={'pk': self.object.pk})
+
+class TechnicianDelete(DeleteView):
+    model = Technician
+    success_url = reverse_lazy('technician_list')
+
